@@ -34,4 +34,4 @@ EXPOSE 5000
 # Run the application using Gunicorn
 # Run the application using Gunicorn
 # Use sh -c to expand the PORT environment variable (default to 5000 if not set)
-CMD ["sh", "-c", "gunicorn -w 2 -b 0.0.0.0:${PORT:-5000} --timeout 120 run:app"]
+CMD ["sh", "-c", "gunicorn -w 1 -b 0.0.0.0:${PORT:-5000} --timeout 120 run:app"]
