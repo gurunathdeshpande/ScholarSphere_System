@@ -6,6 +6,7 @@ flask-marshmallow
 marshmallow-sqlalchemy
 flask-cors
 psycopg2-binary
+mysqlclient
 python-dotenv
 transformers>=4.36.0
 
