@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 # Install system dependencies required for mysqlclient and potential ML build tools
 RUN apt-get update && apt-get install -y \
     pkg-config \
-    default-libmysqlclient-dev \
+    libpq-dev \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
