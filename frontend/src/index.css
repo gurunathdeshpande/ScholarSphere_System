@@ -1,72 +1,138 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-/* ScholarSphere Design System */
+:root {
+  /* Colors */
+  --bg-primary: #0F172A;
+  --bg-secondary: #1E293B;
+  --accent-primary: #8B5CF6; /* Electric Violet */
+  --accent-secondary: #06B6D4; /* Cyan */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --error: #EF4444;
+  --success: #10B981;
 
-@layer base {
-  :root {
-    --background: 211 217 212; /* #D3D9D4 */
-    --foreground: 33 42 49; /* #212A31 */
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
 
-    --card: 211 217 212; /* #D3D9D4 */
-    --card-foreground: 33 42 49; /* #212A31 */
-
-    --popover: 211 217 212; /* #D3D9D4 */
-    --popover-foreground: 33 42 49; /* #212A31 */
-
-    --primary: 18 78 102; /* #124E66 */
-    --primary-foreground: 211 217 212; /* #D3D9D4 */
-
-    --secondary: 116 141 146; /* #748D92 */
-    --secondary-foreground: 33 42 49; /* #212A31 */
-
-    --muted: 116 141 146; /* #748D92 */
-    --muted-foreground: 46 57 68; /* #2E3944 */
-
-    --accent: 116 141 146; /* #748D92 */
-    --accent-foreground: 33 42 49; /* #212A31 */
-
-    --destructive: 239 68 68;
-    --destructive-foreground: 211 217 212; /* #D3D9D4 */
-
-    --border: 116 141 146; /* #748D92 */
-    --input: 116 141 146; /* #748D92 */
-    --ring: 18 78 102; /* #124E66 */
-
-    --radius: 0.75rem;
-  }
+  /* Typography */
+  --font-main: 'Outfit', sans-serif;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@layer components {
-  .scholar-gradient {
-    @apply bg-gradient-scholar text-scholar-100;
-  }
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-  .scholar-gradient-text {
-    @apply bg-gradient-to-r from-scholar-900 to-scholar-700 bg-clip-text text-transparent;
-  }
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  .glass-card {
-    @apply bg-scholar-100/80 backdrop-blur-sm border border-scholar-300/20 shadow-lg;
-  }
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
 
-  .hover-lift {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
-  }
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-family: var(--font-main);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(139, 92, 246, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: transform 0.3s ease;
+}
+
+.input-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 1rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+/* Grid System Override */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -1rem;
+}
+
+.col {
+  padding: 0 1rem;
+  flex: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }

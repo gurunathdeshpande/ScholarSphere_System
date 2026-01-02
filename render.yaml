@@ -1,0 +1,26 @@
+services:
+  # Backend Service
+  - type: web
+    name: scholarsphere-backend
+    env: docker
+    region: oregon
+    plan: free
+    rootDir: backend
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: FLASK_APP
+        value: run.py
+    # Health check path (adjust if you have /health or similar)
+    healthCheckPath: /
+
+  # Frontend Service
+  - type: web
+    name: scholarsphere-frontend
+    env: docker
+    region: oregon
+    plan: free
+    rootDir: frontend
+    envVars:
+      - key: NODE_VERSION
+        value: 20.9.0
