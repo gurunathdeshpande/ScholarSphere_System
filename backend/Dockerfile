@@ -19,8 +19,10 @@ WORKDIR /app
 COPY requirements.txt /app/
 
 # Install Python dependencies
-# --no-cache-dir to keep image size smaller
+# 1. Install CPU-only Torch first (lighter, prevents OOM on build)
+# 2. Install other requirements (Torch requirement will be satisfied by above)
 RUN pip install --upgrade pip && \
+    pip install torch --index-url https://download.pytorch.org/whl/cpu && \
     pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
@@ -30,5 +32,4 @@ COPY . /app/
 EXPOSE 5000
 
 # Run the application using Gunicorn
-# Adjust workers (-w) based on available resources. 4 is a reasonable start.
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "run:app"]

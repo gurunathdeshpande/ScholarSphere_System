@@ -15,7 +15,7 @@ def get_classifier():
     """
     return pipeline(
         "zero-shot-classification",
-        model="facebook/bart-large-mnli",
+        model="valhalla/distilbart-mnli-12-1",
         device=-1  # CPU
     )
 
