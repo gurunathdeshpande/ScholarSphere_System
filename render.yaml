@@ -22,5 +22,6 @@ services:
     plan: free
     rootDir: frontend
     envVars:
-      - key: NODE_VERSION
-        value: 20.9.0
+      - key: VITE_API_URL
+        value: https://scholarsphere-backend.onrender.com/api # Placeholder: Update with actual backend URL after deployment
+
