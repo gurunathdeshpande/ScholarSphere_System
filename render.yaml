@@ -11,7 +11,9 @@ services:
         value: 3.11.0
       - key: FLASK_APP
         value: run.py
-    # Health check path (adjust if you have /health or similar)
+      # SECRET: Set this in Render Dashboard Environment Variables
+      # - key: DATABASE_URL
+      #   value: mysql+mysqldb://avnadmin:PASSWORD@HOST:PORT/defaultdb?ssl-mode=REQUIRED
     healthCheckPath: /
 
   # Frontend Service
